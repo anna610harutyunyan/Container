@@ -84,42 +84,44 @@ public:
 	}
 public:
 	void Push_back(T newValue)
-	{
-		if (m_size == capacity)
-		{
-			capacity *= 2;
+{
+    if (m_size == capacity)
+    {
+        capacity *= 2;
+        T* newPtr = new T[capacity];
 
-		}
-		T* newPtr = new T[capacity];
+        for (int i = 0; i < m_size; ++i)
+        {
+            newPtr[i] = ptr[i];
+        }
 
-		for (int i = 0; i < m_size; ++i)
-		{
-			newPtr[i] = ptr[i];
-		}
+        delete[] ptr;
+        ptr = newPtr;
+    }
 
-		delete[] ptr;
-		ptr = newPtr;
-		ptr[m_size] = newValue;
-		m_size++;
-		std::cout << __func__ << std::endl;
-	}
+    ptr[m_size] = newValue;
+    m_size++;
+    std::cout << __func__ << std::endl;
+}
 
+void Pop_back()
+{
+    if (m_size > 0)
+    {
+        m_size--;
+        std::cout << __func__ << std::endl;
+    }
+}
 
-		
+void Clean()
+{
+    for (int i = (m_size - 1); i >= 0; i--)
+    {
+        Pop_back();
+    }
+    std::cout << "Vector is empty " << std::endl;
+}
 
-	void Pop_back(int extra)
-	{
-		T* newPtr = new T[capacity];
-		for (int i = 0; i < (m_size - 1); ++i)
-		{
-			newPtr[i] = ptr[i];
-		}
-
-		delete[] ptr;
-		ptr = newPtr;
-		m_size--;
-		std::cout << __func__ << std::endl;
-	}
 
 	void Print()const
 	{
@@ -141,14 +143,7 @@ public:
 		}
 		m_size--;
 	}
-	void Clean()
-	{
-		for (int i = (m_size - 1); i = 0; i--)
-		{
-			Pop_back(i);
-		}
-		std::cout << "Vector is empty " << std::endl;
-	}
+	
 };
 
 
