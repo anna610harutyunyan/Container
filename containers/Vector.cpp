@@ -152,7 +152,7 @@ int main(int argc, char** argv)
 	Vector <int> obj(5);
 	Vector<char> obj1(7);
 	Vector<double> obj2(10);
-	obj2.Pop_back(5);
+	obj2.Pop_back();
 	obj.Push_back(1);
 	obj.Clean();
 
