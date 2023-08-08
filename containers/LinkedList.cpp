@@ -14,7 +14,6 @@ struct Node
 	Node(T value) :data(value), next(nullptr) {};
 	~Node()
 	{
-		delete next;
 	}
 };
 template <typename T>
@@ -29,7 +28,6 @@ public:
 	}
 	~SingleLinkedList()
 	{
-		delete head;
 	}
 public:
 	void insertElement(const T& value)
