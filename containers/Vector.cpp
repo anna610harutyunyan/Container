@@ -85,7 +85,7 @@ public:
 public:
 	void Push_back(T newValue)
 {
-    if (m_size == capacity)
+    if (m_size >= capacity)
     {
         capacity *= 2;
         T* newPtr = new T[capacity];
@@ -94,14 +94,17 @@ public:
         {
             newPtr[i] = ptr[i];
         }
-
+	newPtr[m_size]=newValue;
         delete[] ptr;
         ptr = newPtr;
     }
+	else
+    {
+	    ptr[m_size]=newValue;
+	    size++;
+    }
 
-    ptr[m_size] = newValue;
-    m_size++;
-    std::cout << __func__ << std::endl;
+       std::cout << __func__ << std::endl;
 }
 
 void Pop_back()
