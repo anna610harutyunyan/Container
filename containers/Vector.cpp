@@ -101,7 +101,7 @@ public:
 	else
     {
 	    ptr[m_size]=newValue;
-	    size++;
+	    m_size++;
     }
 
        std::cout << __func__ << std::endl;
